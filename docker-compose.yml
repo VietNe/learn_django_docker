@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  # pg:
+  #   image: postgres
+  #   volumes:
+  #     - /home/viet/projects/learn_django/db:/var/lib/postgresql/data
+  #   environment:
+  #     - POSTGRES_DB=${POSTGRES_DB}
+  #     - POSTGRES_USER=${POSTGRES_USER}
+  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  #   ports:
+  #     - "5433:5432"
+  shop:
+    build:
+      context: .
+      dockerfile: learn_django.Dockerfile
+    working_dir: /code
+    volumes:
+      - ./src:/code
+      - ./src/.git:/.git
+    ports:
+      - "8001:8000"
+    # depends_on:
+    #   - pg
